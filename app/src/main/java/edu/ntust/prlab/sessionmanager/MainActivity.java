@@ -26,6 +26,10 @@ import android.widget.Toast;
 
 import edu.ntust.prlab.sessionmanager.database.MemberContract;
 
+import static edu.ntust.prlab.sessionmanager.database.MemberContract.ORDER_BY_AGE;
+import static edu.ntust.prlab.sessionmanager.database.MemberContract.ORDER_BY_GENDER;
+import static edu.ntust.prlab.sessionmanager.database.MemberContract.ORDER_BY_NAME;
+
 public class MainActivity extends AppCompatActivity
         implements MemberRecyclerViewAdapter.OnDragListener, LoaderManager.LoaderCallbacks<Cursor> {
 
@@ -204,13 +208,13 @@ public class MainActivity extends AppCompatActivity
             case R.id.action_sort_by_id:
                 break;
             case R.id.action_sort_by_name:
-                bundle.putString(KEY_ORDER_BY, MemberContract.MemberEntry.NAME + " ASC");
+                bundle.putString(KEY_ORDER_BY, ORDER_BY_NAME);
                 break;
             case R.id.action_sort_by_gender:
-                bundle.putString(KEY_ORDER_BY, MemberContract.MemberEntry.GENDER + " ASC");
+                bundle.putString(KEY_ORDER_BY, ORDER_BY_GENDER);
                 break;
             case R.id.action_sort_by_age:
-                bundle.putString(KEY_ORDER_BY, MemberContract.MemberEntry.AGE + " ASC");
+                bundle.putString(KEY_ORDER_BY, ORDER_BY_AGE);
                 break;
         }
         getLoaderManager().restartLoader(LOADER_SEARCH_MEMBERS, bundle, this);

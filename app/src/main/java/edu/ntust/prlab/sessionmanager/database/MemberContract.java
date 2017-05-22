@@ -12,6 +12,10 @@ public class MemberContract {
 
     public static final String CONTENT_AUTHORITY = "edu.ntust.prlab.sessionmanager";
 
+    public static final String ORDER_BY_NAME = MemberEntry.NAME + " ASC";
+    public static final String ORDER_BY_GENDER = MemberEntry.GENDER + " ASC";
+    public static final String ORDER_BY_AGE = MemberEntry.AGE + " ASC";
+
     public static final Uri CONTENT_URI = new Uri.Builder().scheme("content")
             .authority(CONTENT_AUTHORITY)
             .appendPath(TABLE_NAME)
