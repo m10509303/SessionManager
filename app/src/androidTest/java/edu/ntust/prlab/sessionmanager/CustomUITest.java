@@ -5,13 +5,10 @@ import android.content.res.Resources;
 import android.support.test.espresso.NoMatchingViewException;
 import android.support.test.espresso.ViewAction;
 import android.support.test.espresso.ViewAssertion;
-import android.support.test.espresso.ViewInteraction;
 import android.support.test.espresso.action.GeneralLocation;
 import android.support.test.espresso.action.GeneralSwipeAction;
 import android.support.test.espresso.action.Press;
 import android.support.test.espresso.action.Swipe;
-import android.support.test.espresso.action.ViewActions;
-import android.support.test.espresso.contrib.RecyclerViewActions;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import android.support.v7.widget.RecyclerView;
@@ -51,60 +48,41 @@ public class CustomUITest {
 
     @Test
     public void addAndSortTest() {
-        onView(allOf(withId(R.id.button_add), isDisplayed()))
-                .perform(click());
+        onView(allOf(withId(R.id.button_add), isDisplayed())).perform(click());
 
-        onView(allOf(withId(R.id.input_name), isDisplayed()))
-                .perform(click());
+        onView(allOf(withId(R.id.input_name), isDisplayed())).perform(click());
 
-        onView(allOf(withId(R.id.input_name), isDisplayed()))
-                .perform(replaceText("s1"), closeSoftKeyboard());
+        onView(allOf(withId(R.id.input_name), isDisplayed())).perform(replaceText("s1"), closeSoftKeyboard());
 
-        onView(allOf(withId(R.id.input_age), isDisplayed()))
-                .perform(replaceText("87"), closeSoftKeyboard());
+        onView(allOf(withId(R.id.input_age), isDisplayed())).perform(replaceText("87"), closeSoftKeyboard());
 
-        onView(allOf(withId(android.R.id.button1), withText("OK")))
-                .perform(scrollTo(), click());
+        onView(allOf(withId(android.R.id.button1), withText("OK"))).perform(scrollTo(), click());
 
-        onView(allOf(withId(R.id.button_add), isDisplayed()))
-                .perform(click());
+        onView(allOf(withId(R.id.button_add), isDisplayed())).perform(click());
 
-        onView(allOf(withId(R.id.input_name), isDisplayed()))
-                .perform(click());
+        onView(allOf(withId(R.id.input_name), isDisplayed())).perform(click());
 
-        onView(allOf(withId(R.id.input_name), isDisplayed()))
-                .perform(replaceText("s2"), closeSoftKeyboard());
+        onView(allOf(withId(R.id.input_name), isDisplayed())).perform(replaceText("s2"), closeSoftKeyboard());
 
-        onView(allOf(withId(R.id.input_age), isDisplayed()))
-                .perform(replaceText("36"), closeSoftKeyboard());
+        onView(allOf(withId(R.id.input_age), isDisplayed())).perform(replaceText("36"), closeSoftKeyboard());
 
-        onView(allOf(withId(R.id.radio_female),
-                        withParent(withId(R.id.radio_gender)),
-                        isDisplayed()))
-                .perform(click());
+        onView(allOf(withId(R.id.radio_female), withParent(withId(R.id.radio_gender)), isDisplayed())).perform(click());
 
-        onView(allOf(withId(android.R.id.button1), withText("OK")))
-                .perform(scrollTo(), click());
+        onView(allOf(withId(android.R.id.button1), withText("OK"))).perform(scrollTo(), click());
 
-        onView(allOf(withId(R.id.button_add), isDisplayed()))
-                .perform(click());
+        onView(allOf(withId(R.id.button_add), isDisplayed())).perform(click());
 
-        onView(allOf(withId(R.id.input_name), isDisplayed()))
-                .perform(click());
+        onView(allOf(withId(R.id.input_name), isDisplayed())).perform(click());
 
-        onView(allOf(withId(R.id.input_name), isDisplayed()))
-                .perform(replaceText("s0"), closeSoftKeyboard());
+        onView(allOf(withId(R.id.input_name), isDisplayed())).perform(replaceText("s0"), closeSoftKeyboard());
 
-        onView(allOf(withId(R.id.input_age), isDisplayed()))
-                .perform(replaceText("44"), closeSoftKeyboard());
+        onView(allOf(withId(R.id.input_age), isDisplayed())).perform(replaceText("44"), closeSoftKeyboard());
 
-        onView(allOf(withId(android.R.id.button1), withText("OK")))
-                .perform(scrollTo(), click());
+        onView(allOf(withId(android.R.id.button1), withText("OK"))).perform(scrollTo(), click());
 
         openActionBarOverflowOrOptionsMenu(getInstrumentation().getTargetContext());
 
-        onView(allOf(withId(R.id.title), withText("Sort by Name"), isDisplayed()))
-                .perform(click());
+        onView(allOf(withId(R.id.title), withText("Sort by Name"), isDisplayed())).perform(click());
 
         onView(withRecyclerView(R.id.recycler_view_member).atPosition(0))
                 .check(matches(hasDescendant(withText("s0"))));
@@ -167,8 +145,7 @@ public class CustomUITest {
 
         openActionBarOverflowOrOptionsMenu(getInstrumentation().getTargetContext());
 
-        onView(allOf(withId(R.id.title), withText("Sort by Age"), isDisplayed()))
-                .perform(click());
+        onView(allOf(withId(R.id.title), withText("Sort by Age"), isDisplayed())).perform(click());
 
         onView(withRecyclerView(R.id.recycler_view_member).atPosition(0))
                 .check(matches(hasDescendant(withText("s2"))));
@@ -199,8 +176,7 @@ public class CustomUITest {
 
         openActionBarOverflowOrOptionsMenu(getInstrumentation().getTargetContext());
 
-        onView(allOf(withId(R.id.title), withText("Sort by ID"), isDisplayed()))
-                .perform(click());
+        onView(allOf(withId(R.id.title), withText("Sort by ID"), isDisplayed())).perform(click());
 
         onView(withRecyclerView(R.id.recycler_view_member).atPosition(0))
                 .check(matches(hasDescendant(withText("s1"))));
@@ -230,9 +206,9 @@ public class CustomUITest {
                 .check(matches(hasDescendant(withText("\u2642"))));
 
         onView(withId(R.id.recycler_view_member))
-                .perform(swipeUp())
-                .perform(swipeUp())
-                .perform(swipeUp());
+                .perform(swipeEnd())
+                .perform(swipeEnd())
+                .perform(swipeEnd());
 
         onView(withId(R.id.recycler_view_member)).check(new RecyclerViewItemCountAssertion(0));
     }
@@ -299,7 +275,7 @@ public class CustomUITest {
         }
     }
 
-    public static ViewAction swipeUp() {
+    public static ViewAction swipeEnd() {
         return new GeneralSwipeAction(Swipe.FAST, GeneralLocation.TOP_LEFT,
                 GeneralLocation.BOTTOM_RIGHT, Press.FINGER);
     }
